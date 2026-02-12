@@ -101,12 +101,18 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               transform: isHovered ? 'scale(1.05)' : 'scale(1)',
             }}
           >
-            <ImagePlaceholder
-              emoji={product.imageEmoji}
-              description={product.name}
-              aspect="4/5"
-              bg={product.imageBg}
-            />
+            {product.image ? (
+              <div style={{ aspectRatio: '4/5', backgroundColor: product.imageBg }}>
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            ) : (
+              <ImagePlaceholder
+                emoji={product.imageEmoji}
+                description={product.name}
+                aspect="4/5"
+                bg={product.imageBg}
+              />
+            )}
           </div>
         </Link>
 

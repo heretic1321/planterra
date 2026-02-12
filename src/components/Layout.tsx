@@ -45,10 +45,16 @@ function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between h-14 sm:h-16 lg:h-20">
         <Link
           to="/"
-          className="tracking-[0.25em] uppercase text-xs font-medium transition-colors duration-300 z-50"
-          style={{ fontFamily: fonts.sans, color: p.espresso, textDecoration: 'none' }}
+          className="flex items-center gap-2 transition-colors duration-300 z-50"
+          style={{ textDecoration: 'none' }}
         >
-          Planterra
+          <img src="/logo.png" alt="Planterra" className="w-7 h-7 sm:w-8 sm:h-8 rounded-sm" />
+          <span
+            className="tracking-[0.25em] uppercase text-xs font-medium"
+            style={{ fontFamily: fonts.sans, color: p.espresso }}
+          >
+            Planterra
+          </span>
         </Link>
 
         {/* Desktop Links */}
@@ -211,9 +217,12 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 mb-12 sm:mb-16">
           <div className="col-span-2 sm:col-span-2 lg:col-span-4">
-            <h3 className="text-xl sm:text-2xl mb-3 sm:mb-4" style={{ fontFamily: fonts.serif, color: p.cream }}>
-              Planterra
-            </h3>
+            <div className="flex items-center gap-3 mb-3 sm:mb-4">
+              <img src="/logo.png" alt="Planterra" className="w-9 h-9 rounded-sm brightness-110" />
+              <h3 className="text-xl sm:text-2xl" style={{ fontFamily: fonts.serif, color: p.cream }}>
+                Planterra
+              </h3>
+            </div>
             <p className="text-sm leading-relaxed max-w-xs" style={{ fontFamily: fonts.sans, color: p.warmStone, opacity: 0.6 }}>
               Self-watering wall planters that need no drilling. Designed and made in India.
               Bringing life to your walls, one planter at a time.

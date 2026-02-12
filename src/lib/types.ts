@@ -16,6 +16,7 @@ export interface Product {
   colors?: { name: string; hex: string }[]
   imageEmoji: string
   imageBg: string
+  image?: string
 }
 
 export interface CartItem {

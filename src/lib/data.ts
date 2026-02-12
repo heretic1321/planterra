@@ -19,6 +19,7 @@ export const products: Product[] = [
     colors: [{ name: 'White', hex: '#F5F0EB' }],
     imageEmoji: '🌿',
     imageBg: '#E8DDD1',
+    image: '/home-page-final.jpeg',
   },
   {
     id: 'add-on-planter',
@@ -36,6 +37,7 @@ export const products: Product[] = [
     colors: [{ name: 'White', hex: '#F5F0EB' }],
     imageEmoji: '🪴',
     imageBg: '#F5F0EB',
+    image: '/addonPlanter.jpeg',
   },
   {
     id: 'extended-dowel',

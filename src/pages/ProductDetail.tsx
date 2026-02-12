@@ -281,12 +281,18 @@ function RelatedProducts({ currentProduct }: { currentProduct: Product }) {
               >
                 <Link to={`/product/${product.slug}`} className="block overflow-hidden">
                   <div className="transition-transform duration-700 group-hover:scale-105">
-                    <ImagePlaceholder
-                      emoji={product.imageEmoji}
-                      description={product.name}
-                      aspect="1/1"
-                      bg={product.imageBg}
-                    />
+                    {product.image ? (
+                      <div style={{ aspectRatio: '1/1', backgroundColor: product.imageBg }}>
+                        <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
+                      </div>
+                    ) : (
+                      <ImagePlaceholder
+                        emoji={product.imageEmoji}
+                        description={product.name}
+                        aspect="1/1"
+                        bg={product.imageBg}
+                      />
+                    )}
                   </div>
                 </Link>
                 <div className="p-4 flex flex-col flex-1">
@@ -472,13 +478,19 @@ export default function ProductDetail() {
                     </div>
                   )}
 
-                  <ImagePlaceholder
-                    emoji={product.imageEmoji}
-                    description={product.description}
-                    aspect="4/5"
-                    bg={product.imageBg}
-                    className="w-full"
-                  />
+                  {product.image ? (
+                    <div className="w-full" style={{ aspectRatio: '4/5', backgroundColor: product.imageBg }}>
+                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <ImagePlaceholder
+                      emoji={product.imageEmoji}
+                      description={product.description}
+                      aspect="4/5"
+                      bg={product.imageBg}
+                      className="w-full"
+                    />
+                  )}
                 </div>
 
                 {/* Color dots below image */}

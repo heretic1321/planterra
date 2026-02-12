@@ -259,13 +259,14 @@ function Hero() {
               transition: 'all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s',
             }}
           >
-            <ImagePlaceholder
-              emoji="🌿"
-              description="Hero shot: Wooden dowel rail with two white 3D-printed planters on a warm cream wall. Trailing pothos cascading, soft morning light."
-              aspect="3/4"
-              bg={colors.sand}
-              className="w-full"
-            />
+            <div className="w-full overflow-hidden" style={{ aspectRatio: '3/4', backgroundColor: colors.sand }}>
+              <img
+                src="/home-page-final.jpeg"
+                alt="The Planterra System — Two white 3D-printed self-watering planters with trailing pothos and Boston fern on a wall-mounted wooden dowel"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
             <p
               className="mt-3 text-[10px] tracking-[0.2em] uppercase text-right"
               style={{ fontFamily: fonts.sans, color: colors.warmStone }}
@@ -362,13 +363,14 @@ function StorySection() {
                 className="lg:-ml-8 relative"
                 style={{ transform: `translateY(${scrollY * 0.03}px)` }}
               >
-                <ImagePlaceholder
-                  emoji="🤲"
-                  description="Close-up: Hands placing a fern into a white 3D-printed planter. The internal reservoir and wick system are visible. Soft natural light on a warm stone surface."
-                  aspect="4/5"
-                  bg={colors.sand}
-                  className="w-full"
-                />
+                <div className="w-full overflow-hidden" style={{ aspectRatio: '4/5', backgroundColor: colors.sand }}>
+                  <img
+                    src="/story.jpeg"
+                    alt="Hands placing a pothos into a white 3D-printed Planterra planter on a warm stone surface"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 {/* Decorative dot grid overlay */}
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4">
                   <DotGrid color={colors.sage} cols={4} rows={4} />
@@ -435,6 +437,7 @@ const featureData = [
     icon: '💧',
     image:
       'Cross-section view of the planter showing the drip tray, water absorbers, and cotton ball wicking system. Clean white background, technical illustration feel.',
+    realImage: '/self-watering.jpeg',
   },
   {
     number: '02',
@@ -445,6 +448,7 @@ const featureData = [
     icon: '🏠',
     image:
       'Two white planters on a wooden dowel in a minimal home office. Clean desk below with laptop and coffee. Warm afternoon light.',
+    realImage: '/wall-hanging.jpeg',
   },
   {
     number: '03',
@@ -455,16 +459,7 @@ const featureData = [
     icon: '🧩',
     image:
       'Flat-lay: Multiple white planters arranged around a wooden dowel. Overhead shot on linen background.',
-  },
-  {
-    number: '04',
-    title: 'Precision-Crafted',
-    subtitle: 'Layer by layer',
-    description:
-      'The ribbed texture is not a flaw — it is the signature. Each planter is crafted layer-by-layer from plant-based PLA for a handmade feel that looks intentional and premium.',
-    icon: '✨',
-    image:
-      'Macro shot: Planter surface showing fine layer lines and ribbed texture. White planter on warm stone with dried eucalyptus sprig.',
+    realImage: '/extendable.jpeg',
   },
 ]
 
@@ -481,13 +476,24 @@ function FeatureCard({ feature, index }: { feature: typeof featureData[0]; index
         }`}
       >
         <Reveal direction={isEven ? 'left' : 'right'} delay={0.1}>
-          <ImagePlaceholder
-            emoji={feature.icon}
-            description={feature.image}
-            aspect="4/5"
-            bg={isEven ? colors.sand : `${colors.sage}22`}
-            className="w-full"
-          />
+          {feature.realImage ? (
+            <div className="w-full overflow-hidden" style={{ aspectRatio: '4/5', backgroundColor: isEven ? colors.sand : `${colors.sage}22` }}>
+              <img
+                src={feature.realImage}
+                alt={feature.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <ImagePlaceholder
+              emoji={feature.icon}
+              description={feature.image}
+              aspect="4/5"
+              bg={isEven ? colors.sand : `${colors.sage}22`}
+              className="w-full"
+            />
+          )}
         </Reveal>
       </div>
 
@@ -804,13 +810,19 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
               boxShadow: hovered ? `0 20px 40px ${colors.espresso}15` : `0 2px 8px ${colors.espresso}08`,
             }}
           >
-            <ImagePlaceholder
-              emoji={product.imageEmoji}
-              description={product.name}
-              aspect="4/5"
-              bg={product.imageBg}
-              className="w-full"
-            />
+            {product.image ? (
+              <div className="w-full" style={{ aspectRatio: '4/5', backgroundColor: product.imageBg }}>
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            ) : (
+              <ImagePlaceholder
+                emoji={product.imageEmoji}
+                description={product.name}
+                aspect="4/5"
+                bg={product.imageBg}
+                className="w-full"
+              />
+            )}
           </div>
         </Link>
 

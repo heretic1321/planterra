@@ -131,12 +131,18 @@ export default function Cart() {
                       >
                         {/* Product Image */}
                         <Link to={`/product/${item.product.slug}`} className="flex-shrink-0">
-                          <ImagePlaceholder
-                            emoji={item.product.imageEmoji}
-                            aspect="1/1"
-                            bg={item.product.imageBg}
-                            className="w-20 h-20 sm:w-28 sm:h-28"
-                          />
+                          {item.product.image ? (
+                            <div className="w-20 h-20 sm:w-28 sm:h-28" style={{ backgroundColor: item.product.imageBg }}>
+                              <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
+                            </div>
+                          ) : (
+                            <ImagePlaceholder
+                              emoji={item.product.imageEmoji}
+                              aspect="1/1"
+                              bg={item.product.imageBg}
+                              className="w-20 h-20 sm:w-28 sm:h-28"
+                            />
+                          )}
                         </Link>
 
                         {/* Product Details */}
@@ -488,12 +494,18 @@ export default function Cart() {
                                 e.currentTarget.style.backgroundColor = colors.linen
                               }}
                             >
-                              <ImagePlaceholder
-                                emoji={product.imageEmoji}
-                                aspect="1/1"
-                                bg={product.imageBg}
-                                className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0"
-                              />
+                              {product.image ? (
+                                <div className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0" style={{ backgroundColor: product.imageBg }}>
+                                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                                </div>
+                              ) : (
+                                <ImagePlaceholder
+                                  emoji={product.imageEmoji}
+                                  aspect="1/1"
+                                  bg={product.imageBg}
+                                  className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0"
+                                />
+                              )}
                               <div className="flex-1 min-w-0">
                                 <h4
                                   className="text-sm truncate"
